@@ -2,6 +2,7 @@ package com.birthday;
 
 import com.birthday.model.Role;
 import com.birthday.model.UserRole;
+import com.birthday.repo.UserRepository;
 import com.birthday.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,6 +18,9 @@ import java.util.Set;
 public class BirthdayserverApplication implements CommandLineRunner {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BirthdayserverApplication.class, args);

@@ -3,19 +3,31 @@ package com.birthday.controller;
 import com.birthday.model.Role;
 import com.birthday.model.User;
 import com.birthday.model.UserRole;
+import com.birthday.repo.UserRepository;
 import com.birthday.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin ("*")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+    @GetMapping("users")
+    public List<User> getUsers(){
+        return this.userRepository.findAll();
+
+    }
+
     //creating user
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
